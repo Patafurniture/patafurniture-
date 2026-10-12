@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broker Administration Portal | PataFurniture</title>
+  <meta name="description" content="Official administrative management system for PataFurniture brokers. Review artisan submissions, approve listings, and manage client enquiries.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="partner.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="PataFurniture Logo" class="nav-logo-img">
+        <div class="nav-logo-text">Pata<span>Furniture</span> <span class="admin-badge">Admin</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">← Main Website</a>
+        <a href="partner.html">Partner Portal</a>
+        <a href="#" class="nav-cta logout-btn" id="adminLogoutBtn" style="display: none;">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-container">
+
+    <!-- ====== AUTHENTICATION SECTION ====== -->
+    <section class="admin-auth-section" id="adminAuthSection">
+      <div class="admin-auth-card">
+        <div class="admin-auth-header">
+          <h2>Broker Operations Panel</h2>
+          <p>PataFurniture HQ Broker & Admin Control</p>
+        </div>
+
+        <div class="credentials-hint">
+          <strong>🔑 Pre-configured Admin Logins:</strong><br>
+          Email: <code>admin@patafurniture.com</code><br>
+          Password: <code>adminpassword123</code>
+        </div>
+
+        <form class="auth-form active" id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminEmail">Broker Admin Email</label>
+            <input type="email" id="adminEmail" placeholder="admin@patafurniture.com" required value="admin@patafurniture.com">
+          </div>
+          <div class="form-group">
+            <label for="adminPassword">Password</label>
+            <input type="password" id="adminPassword" placeholder="••••••••" required value="adminpassword123">
+          </div>
+          <button type="submit" class="btn btn-primary" id="adminLoginBtn">
+            Sign In to Admin Dashboard
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ====== DASHBOARD SECTION (HIDDEN BY DEFAULT) ====== -->
+    <section class="admin-dashboard-section" id="adminDashboardSection" style="display: none;">
+      
+      <div class="admin-header-bar">
+        <div class="admin-title-wrap">
+          <span>PataFurniture Operations</span>
+          <h1>Broker Oversight & Catalog Control</h1>
+        </div>
+        <div style="display: flex; gap: var(--space-md); align-items: center;">
+          <button class="btn btn-secondary btn-sm" id="resetDemoDataBtn" title="Re-seed demo listings and enquiries">
+            🔄 Reset Demo Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <span class="stat-label">Verified Partners</span>
+            <h3 class="stat-value" id="adminStatPartners">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-info">
+            <span class="stat-label">Pending Approval</span>
+            <h3 class="stat-value" id="adminStatPending" style="color: var(--color-accent);">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✨</div>
+          <div class="stat-info">
+            <span class="stat-label">Live Catalog Items</span>
+            <h3 class="stat-value" id="adminStatActive">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📩</div>
+          <div class="stat-info">
+            <span class="stat-label">Client Enquiries</span>
+            <h3 class="stat-value" id="adminStatMessages">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <span class="stat-label">Sold Brokerage Value</span>
+            <h3 class="stat-value" id="adminStatRevenue">0</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-nav-tabs">
+        <button class="admin-tab-btn active" data-tab="tab-approvals">
+          ⏳ Listing Approvals Queue
+          <span class="tab-badge" id="badgePendingCount">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-catalog">
+          📦 All Catalog Listings
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-partners">
+          🏢 Registered Partners
+        </button>
+        <button class="admin-tab-btn" data-tab="tab-enquiries">
+          💬 Website Client Enquiries
+        </button>
+      </div>
+
+      <!-- TAB 1: Approvals Queue -->
+      <div class="admin-tab-content active" id="tab-approvals">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3>Pending Submissions Review</h3>
+              <p>Approve artisan furniture to make them visible immediately on the public website portfolio.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Artisan / Maker</th>
+                  <th>Category</th>
+                  <th>Asking Price</th>
+                  <th>Location</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="approvalsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: All Catalog Listings -->
+      <div class="admin-tab-content" id="tab-catalog">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3>Complete Inventory Directory</h3>
+              <p>Manage all artisan custom listings, toggle publication, or mark items as sold.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Maker</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Status Controls</th>
+                </tr>
+              </thead>
+              <tbody id="catalogTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: Registered Partners -->
+      <div class="admin-tab-content" id="tab-partners">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3>Artisans & Furniture Brands Network</h3>
+              <p>Verified workshop partners registered on PataFurniture.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Business Name</th>
+                  <th>Contact Person</th>
+                  <th>Email & Phone</th>
+                  <th>Location</th>
+                  <th>KRA PIN / Reg No</th>
+                  <th>Billing Status</th>
+                </tr>
+              </thead>
+              <tbody id="partnersTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: Client Enquiries -->
+      <div class="admin-tab-content" id="tab-enquiries">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3>Inbound Client Requests</h3>
+              <p>Leads and service requests submitted via the contact form on the main website.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Client Name</th>
+                  <th>Contact</th>
+                  <th>Service Requested</th>
+                  <th>Message Preview</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="enquiriesTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ====== ENQUIRY DETAIL MODAL ====== -->
+  <div class="admin-modal" id="enquiryModal">
+    <div class="admin-modal-card">
+      <button class="admin-modal-close" id="closeEnquiryModal">&times;</button>
+      <h3 id="modalClientName" style="font-family: var(--font-display); color: var(--color-white); margin-bottom: var(--space-xs);">Client Enquiry</h3>
+      <p id="modalClientMeta" style="font-size: var(--text-xs); color: var(--color-accent); margin-bottom: var(--space-lg); text-transform: uppercase;">Service Request</p>
+      
+      <div style="background: rgba(0,0,0,0.25); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-lg);">
+        <p><strong>Email:</strong> <span id="modalClientEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="modalClientPhone"></span></p>
+        <p><strong>Date:</strong> <span id="modalClientDate"></span></p>
+      </div>
+
+      <div style="margin-bottom: var(--space-xl);">
+        <h4 style="font-size: var(--text-sm); margin-bottom: var(--space-xs); color: var(--color-light);">Client Message:</h4>
+        <p id="modalClientMessage" style="line-height: 1.6; color: var(--color-white); font-style: italic;"></p>
+      </div>
+
+      <div style="display: flex; gap: var(--space-md); justify-content: flex-end;">
+        <a id="modalWhatsAppBtn" href="#" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; border-color: transparent;">
+          💬 Reply via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

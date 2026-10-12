@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Portal | PataFurniture</title>
+  <meta name="description" content="Sell your high-quality furniture on PataFurniture. Join our network of premium local artisans and reach customers across Kenya.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="partner.css">
+</head>
+<body class="partner-portal-body">
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="navbar scrolled">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="PataFurniture Logo" class="nav-logo-img">
+        <div class="nav-logo-text">Pata<span>Furniture</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">← Back to Main Website</a>
+        <a href="admin.html" style="color: var(--color-accent); font-weight: 500;">Broker Admin</a>
+        <a href="#" class="nav-cta logout-btn" id="logoutBtn" style="display: none;">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="partner-container">
+    
+    <!-- ====== AUTHENTICATION SECTION ====== -->
+    <section class="auth-section" id="authSection">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Partner Dashboard</h2>
+          <p>For Carpenters, Artisans & Furniture Brands in Kenya</p>
+        </div>
+
+        <div style="background: rgba(201, 169, 110, 0.1); border: 1px dashed var(--color-accent); border-radius: var(--radius-md); padding: var(--space-sm) var(--space-md); margin-bottom: var(--space-md); font-size: var(--text-xs); line-height: 1.5; color: var(--color-light);">
+          <strong>🔑 Demo Partner Login:</strong><br>
+          Email: <code style="color: var(--color-accent);">partner@patafurniture.com</code><br>
+          Password: <code style="color: var(--color-accent);">password123</code>
+        </div>
+        
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin">Sign In</button>
+          <button class="auth-tab" id="tabRegister">Register Business</button>
+        </div>
+
+        <!-- Login Form -->
+        <form class="auth-form active" id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="partner@patafurniture.com" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Access Dashboard
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form class="auth-form" id="registerForm">
+          <div class="subscription-banner">
+            <div class="sub-price">KES 12,500 <span>/ month</span></div>
+            <p>Premium seller account subscription. List unlimited items, get priority brokerage & white-glove transport services.</p>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regBusinessName">Official Business Name</label>
+              <input type="text" id="regBusinessName" placeholder="e.g. Westlands Carpentry Ltd" required>
+            </div>
+            <div class="form-group">
+              <label for="regOwnerName">Contact Person / Director</label>
+              <input type="text" id="regOwnerName" placeholder="e.g. John Kamau" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regEmail">Business Email Address</label>
+              <input type="email" id="regEmail" placeholder="info@business.com" required>
+            </div>
+            <div class="form-group">
+              <label for="regPhone">WhatsApp / Mobile Number</label>
+              <input type="tel" id="regPhone" placeholder="e.g. 0708083361" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regBusinessType">Business Category</label>
+              <select id="regBusinessType" required>
+                <option value="" disabled selected>Select business type</option>
+                <option value="Individual Carpenter / Artisan">Individual Carpenter / Artisan</option>
+                <option value="Registered LTD Company">Registered LTD Company</option>
+                <option value="Furniture Showroom / Retailer">Furniture Showroom / Retailer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="regLocation">Location / Workshop City</label>
+              <select id="regLocation" required>
+                <option value="" disabled selected>Select location</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Eldoret">Eldoret</option>
+                <option value="Other">Other (Kenya)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regKraPin">KRA PIN Number</label>
+              <input type="text" id="regKraPin" placeholder="e.g. A012345678Z" required>
+            </div>
+            <div class="form-group">
+              <label for="regBusinessRegNo">Business Reg. / Certificate No.</label>
+              <input type="text" id="regBusinessRegNo" placeholder="e.g. PVT-AAAAAA" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regAddress">Physical Workshop Address</label>
+            <input type="text" id="regAddress" placeholder="e.g. Off Ngong Road, Behind Junction Mall, Nairobi" required>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Create Account Password</label>
+            <input type="password" id="regPassword" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Proceed to Payment & Sign Up
+            <span class="btn-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ====== DASHBOARD SECTION (HIDDEN BY DEFAULT) ====== -->
+    <section class="dashboard-section" id="dashboardSection" style="display: none;">
+      <div class="dashboard-header-bar">
+        <div>
+          <span class="dashboard-welcome">Welcome back,</span>
+          <h1 class="dashboard-business-name" id="dashboardBusinessName">Workshop Name</h1>
+        </div>
+        <button class="btn btn-primary" id="openPostModalBtn">
+          Post New Furniture
+          <span class="btn-icon">+</span>
+        </button>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-info">
+            <span class="stat-label">Active Listings</span>
+            <h3 class="stat-value" id="statListingsCount">0</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👁️</div>
+          <div class="stat-info">
+            <span class="stat-label">Monthly Views</span>
+            <h3 class="stat-value" id="statViews">1,240</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🤝</div>
+          <div class="stat-info">
+            <span class="stat-label">Active Brokerages</span>
+            <h3 class="stat-value" id="statBrokerages">3</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💸</div>
+          <div class="stat-info">
+            <span class="stat-label">Total Revenue (KES)</span>
+            <h3 class="stat-value" id="statRevenue">480,000</h3>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💳</div>
+          <div class="stat-info">
+            <span class="stat-label">Subscription Billing</span>
+            <h3 class="stat-value" id="statBillingStatus" style="color: var(--color-success); font-size: var(--text-base);">Active (12,500/mo)</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catalog / Listings Manager -->
+      <div class="catalog-card">
+        <div class="catalog-header">
+          <h3>Your Furniture Catalog</h3>
+          <p>Manage the furniture you want PataFurniture to broker, transport, and install.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Materials</th>
+                <th>Dimensions</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="catalogTableBody">
+              <!-- Dynamically populated -->
+              <tr>
+                <td colspan="7" style="text-align: center; padding: var(--space-2xl); opacity: 0.5;">No active listings. Click "Post New Furniture" to list your first item.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Business Profile & Verification Details -->
+      <div class="catalog-card" style="margin-top: var(--space-3xl); border-color: rgba(201, 169, 110, 0.15);">
+        <div class="catalog-header" style="border-bottom: 1px solid rgba(201, 169, 110, 0.08); padding-bottom: var(--space-md); margin-bottom: var(--space-lg);">
+          <h3>Legal Business Verification Profile</h3>
+          <p>Official verified details matching your registered partner account with PataFurniture.</p>
+        </div>
+        <div class="profile-details-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xl); font-size: var(--text-sm);">
+          <div>
+            <span style="opacity: 0.6; display: block; font-size: var(--text-xs); text-transform: uppercase; margin-bottom: 4px;">KRA PIN Number</span>
+            <strong id="profileKra" style="color: var(--color-white); font-family: var(--font-accent);">A012345678Z</strong>
+          </div>
+          <div>
+            <span style="opacity: 0.6; display: block; font-size: var(--text-xs); text-transform: uppercase; margin-bottom: 4px;">Reg / Certificate No.</span>
+            <strong id="profileRegNo" style="color: var(--color-white); font-family: var(--font-accent);">CPR/2026/000000</strong>
+          </div>
+          <div>
+            <span style="opacity: 0.6; display: block; font-size: var(--text-xs); text-transform: uppercase; margin-bottom: 4px;">Workshop Address</span>
+            <strong id="profileAddress" style="color: var(--color-white);">Not Specified</strong>
+          </div>
+          <div>
+            <span style="opacity: 0.6; display: block; font-size: var(--text-xs); text-transform: uppercase; margin-bottom: 4px;">Business Entity Type</span>
+            <strong id="profileType" style="color: var(--color-white);">Not Specified</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== POST PRODUCT MODAL ====== -->
+  <div class="post-modal" id="postModal">
+    <div class="post-modal-content">
+      <button class="post-modal-close" id="postModalClose">&times;</button>
+      <div class="post-modal-header">
+        <h3>Post Furniture Item</h3>
+        <p>List your furniture. PataFurniture will show it to customers, negotiate prices, manage purchases, and deliver/fit it.</p>
+      </div>
+      
+      <form class="post-form" id="postForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postTitle">Furniture Name / Title</label>
+            <input type="text" id="postTitle" placeholder="e.g. Modern Mahogany Coffee Table" required>
+          </div>
+          <div class="form-group">
+            <label for="postCategory">Category</label>
+            <select id="postCategory" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="living">Living Room</option>
+              <option value="bedroom">Bedroom</option>
+              <option value="dining">Dining Room</option>
+              <option value="office">Office</option>
+              <option value="outdoor">Outdoor / Patio</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postPrice">Asking Price (KES)</label>
+            <input type="number" id="postPrice" placeholder="e.g. 45000" required>
+          </div>
+          <div class="form-group">
+            <label for="postMaterials">Wood Type / Core Materials</label>
+            <input type="text" id="postMaterials" placeholder="e.g. Mahogany wood, Teak wood, Pine" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postDimensions">Dimensions (W x H x D)</label>
+            <input type="text" id="postDimensions" placeholder="e.g. 1.2m x 0.45m x 0.6m" required>
+          </div>
+          <div class="form-group">
+            <label for="postImage">Product Photo</label>
+            <!-- File input to upload own photo -->
+            <input type="file" id="postImage" accept="image/*" class="file-input-hidden">
+            <div class="photo-select-wrapper" id="photoSelectWrapper">
+              <span id="photoFileName">Choose photo or upload file</span>
+              <button type="button" class="btn btn-secondary btn-sm" id="uploadBtn">Browse</button>
+            </div>
+            <p style="font-size: var(--text-xs); opacity: 0.5; margin-top: 4px;">Upload any JPEG/PNG image. We will store it for live-preview.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="postDescription">Furniture Description & Specs</label>
+          <textarea id="postDescription" placeholder="Provide full details: wood finish, upholstery material, structural warranty, or customization options..." rows="4" required></textarea>
+        </div>
+
+        <div class="post-submit-bar">
+          <button type="button" class="btn btn-secondary" id="cancelPostBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="savePostBtn">Publish Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====== M-PESA PAYMENT MODAL ====== -->
+  <div class="post-modal" id="paymentModal">
+    <div class="post-modal-content" style="max-width: 480px; text-align: center;">
+      <button class="post-modal-close" id="paymentModalClose">&times;</button>
+      <div class="post-modal-header">
+        <div style="font-size: 3rem; margin-bottom: var(--space-md);">📱</div>
+        <h3>M-Pesa STK Push Payment</h3>
+        <p>Complete your monthly subscription of <strong>Ksh. 12,500</strong> to activate your partner profile.</p>
+      </div>
+
+      <div class="payment-note" style="background: rgba(37, 211, 102, 0.08); border: 1px dashed rgba(37, 211, 102, 0.3); padding: var(--space-md); border-radius: var(--radius-md); text-align: left; font-size: var(--text-xs); line-height: 1.5; color: var(--color-light); margin-bottom: var(--space-lg);">
+        <strong>Instructions:</strong> We will send an M-Pesa STK Push request to the number below. Enter your M-Pesa PIN on your phone to authorize.
+      </div>
+
+      <form id="paymentForm" class="post-form">
+        <div class="form-group" style="text-align: left;">
+          <label for="paymentPhone">M-Pesa Phone Number</label>
+          <input type="tel" id="paymentPhone" placeholder="e.g. 0708083361" required>
+        </div>
+
+        <div class="post-submit-bar" style="border-top: none; padding-top: 0; margin-top: var(--space-lg); justify-content: center; gap: var(--space-md);">
+          <button type="button" class="btn btn-secondary" id="cancelPaymentBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="confirmPaymentBtn" style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; border-color: transparent;">
+            Send M-Pesa Prompt
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="partner.js"></script>
+</body>
+</html>
